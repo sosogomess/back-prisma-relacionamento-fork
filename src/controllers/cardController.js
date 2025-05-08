@@ -10,6 +10,8 @@ class CardController {
     const pagina = req.query.pagina || 1;
     const limite = req.query.limite || 10;
 
+    const name = req.query.name;
+
     // const pagina = req.query.page;
     // console.log("Página:", pagina);
 
@@ -17,7 +19,7 @@ class CardController {
     // console.log("Limite:", limite);
     
     try {
-      const cartas = await CardModel.findAll(raridade, ataque, pagina, limite);
+      const cartas = await CardModel.findAll(raridade, ataque, pagina, limite, name);
       res.json(cartas);
     } catch (error) {
       console.error("Erro ao buscar as cartas:", error);
